@@ -34,6 +34,9 @@
                             <field name="end_date_time"/>
                         </group>
                     </group>
+                    <group>
+                        <field name="task_comments"/>
+                    </group>
                     <notebook>
                         <page string="Task Details">
                             <field name="task_details">

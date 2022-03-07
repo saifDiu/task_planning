@@ -27,6 +27,8 @@ class TaskPlanning(models.Model):
     def mark_as_done(self):
         self.task_state = 'done'
 
+    task_comments = fields.Text(string="Comments")
+
 
 class TaskPlanningDetails(models.Model):
     _name = 'task.planning.line'
@@ -35,4 +37,5 @@ class TaskPlanningDetails(models.Model):
 
     task_name = fields.Char(string="Name")
     task_details = fields.Char(string="Details")
+
 
