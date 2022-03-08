@@ -11,12 +11,15 @@ class TaskPlanning(models.Model):
     start_time = fields.Datetime(string="Start Date/Time")
     end_date_time = fields.Datetime(string="End Date/Time")
 
-    upload_picture = fields.Many2many('ir.attachment',string="Task Files")
+    initial_task_files = fields.Many2many('ir.attachment','initial_task_rel',string="Initial Files")
+
+    upload_picture = fields.Many2many('ir.attachment','proof_task_files',string="Proof Files")
 
     task_state = fields.Selection([
         ('draft','Draft'),
         ('assigned','Assigned'),
-        ('done','Done')
+        ('processing','Processing'),
+        ('done','Done'),
     ],default='draft',string="State")
 
     task_details = fields.One2many('task.planning.line','task_id')
@@ -29,6 +32,9 @@ class TaskPlanning(models.Model):
 
     task_comments = fields.Text(string="Comments")
 
+    def do_process(self):
+        self.task_state = 'processing'
+
 
 class TaskPlanningDetails(models.Model):
     _name = 'task.planning.line'
@@ -37,5 +43,6 @@ class TaskPlanningDetails(models.Model):
 
     task_name = fields.Char(string="Name")
     task_details = fields.Char(string="Details")
+    task_comment = fields.Text(string="Comment")
 
 
