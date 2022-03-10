@@ -44,5 +44,6 @@ class TaskPlanningDetails(models.Model):
     task_name = fields.Char(string="Name")
     task_details = fields.Char(string="Details")
     task_comment = fields.Text(string="Comment")
+    task_location = fields.Char(string="Location")
 
 
