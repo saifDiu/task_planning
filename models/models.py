@@ -1,18 +1,11 @@
 # -*- coding: utf-8 -*-
 
-# from odoo import models, fields, api
+from odoo import models, fields, api
 
 
-# class task_planning(models.Model):
-#     _name = 'task_planning.task_planning'
-#     _description = 'task_planning.task_planning'
+class task_planning(models.Model):
+    _inherit = 'res.partner'
 
-#     name = fields.Char()
-#     value = fields.Integer()
-#     value2 = fields.Float(compute="_value_pc", store=True)
-#     description = fields.Text()
-#
-#     @api.depends('value')
-#     def _value_pc(self):
-#         for record in self:
-#             record.value2 = float(record.value) / 100
+    type_of_product = fields.Char(string="Type of Product")
+    terms = fields.Char(string="Terms")
+
